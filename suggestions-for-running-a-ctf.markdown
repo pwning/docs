@@ -92,6 +92,15 @@ Like everything else, test all parts of the infrastructure carefully. Many CTF o
 
 Make sure to do proper testing on the final production infrastructure! For example, in the first pCTF, the pwnables were running on a machine which didn't support NX. This was missed until after the CTF because the production infrastructure was not thoroughly tested.
 
+A partial checklist list of things to test on the production infrastructure:
+
+* End to end testing of team registration and key submission
+* Ensure key submission does not have double-counting race conditions.
+* Perform load tests on scoreboard and key submission.
+* Check that pwnable machines support the desired protections.
+* Test full solutions for all problems - this means that you can run your solution script and it outputs the correct key. "My solution script gets eip=0x41414141" may not be enough!
+* Test out the process for updating a problem during the CTF - mistakes happen, so it's best to be prepared.
+
 # Problems
 
 Remember that the goal of a CTF is for the players to learn and have fun! The point of a problem is to be solved, so it's nice when every problem is solved by at least one team. Be creative and try to make sure solvers learn something cool from your problems - remember that the players are your customers, so try to make them happy :-) There are some more specific recommendations for certain categories of problems below:
