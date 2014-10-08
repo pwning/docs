@@ -118,6 +118,26 @@ Local pwnables usually involve SSHing into a machine and exploiting a setuid/set
 
 As with all problems, make sure to fully test it after it is fully setup. Specifically, you'll want to make sure that your reference solution works as one of the CTF users and that the flag isn't readable via any other means, or writeable by any user besides root.
 
+### Local Kernel
+
+Local kernel exploitation challenges typically involve SSHing into a machine and exploiting a custom kernel driver. This type of challenge can be difficult to reliably host, and are not easily scalable. Since failed exploitation typically brings down the OS, each team should have their own isolated VM. Kernel challenges may be more appropriate for CTF "finals" where the number of teams is small and sufficient system resources may be allocated.
+
+A possible setup could be running one or many ESXi hosts with a separate VM designated to each team. Provide SSH credentials to each team.
+
+A few tips and reminders:
+ * Instead of making 20 separate VMs, create one base VM and create 20 linked clones.
+ * Log in after each VM is created and configure a unique static IP address.
+ * Ensure that the OS is completely updated and patched against all public vulnerabilities.
+ * REMOVE THE USER FROM SUDO ACCESS!
+ * Create the flag in /root and: chmod 400 -R /root; chown root:root -R /root
+ * Drop a staff member SSH key in /root/.ssh/ and enable remote root SSH login to help troubleshoot any potential issues.
+ * Permit all users to read /proc/kallsyms unless an info leak is part of the challenge: echo 0 > /proc/sys/kernel/kptr_restrict
+ * Disable kernel panics on oopses: echo 0 > /proc/sys/kernel/panic_on_oops
+ * Develop a simple (authenticated) script for teams to call that reboots the remote VM. This should interface with the hypervisor, not the guest since the guest OS may be unresponsive after an exploitation attempt. Otherwise you will have teams frequently asking for a reboot.
+ * Ensure that a working solution exists and that all expected mitigations are actually functional in the VM. This includes the presence of enforced read-only memory, SMEP/SMAP, etc.
+
+Kernel challenges should be fun! Don't just install an old OS and task competitors with compiling public exploits. There are many ways to be creative with your challenge!
+
 ### Remote
 
 Remote pwnables involve running a vulnerable network service. There are two popular ways to go about this, xinetd and doing fork/accept in the binary itself.
