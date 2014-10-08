@@ -380,7 +380,8 @@ int main(int argc, char **argv) {
         }
 
         if (pid == 0) {
-            // Some people like to add an alarm here as well.
+            // Avoid tons of long-running processes sticking around.
+            alarm(15);
 
             // If you do not close the socket fd, someone who
             // exploits the service could call accept() on it and
