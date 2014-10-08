@@ -22,7 +22,7 @@ While the flag format seems like a small detail, annoying flag formats can turn 
 
 Wherever possible, make the flag a simple ASCII string that competitors discover while solving the problem, and NOT a complex format like
 
-<md5(name of target)>\_<date of event>\_<function address>
+`<md5(name of target)>_<date of event>_<function address>`
 
 These formats are easy to accidentally under-specify! How should the name be capitalized? Does the date use slashes, dashes, or dots as separators? Does the date include the time, and in what time zone? How precise does the time need to be, seconds, milliseconds or microseconds? Is the function address in hex? Is it zero-padded to 8 or 16 digits? Does it start with "0x", or not?
 
