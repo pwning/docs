@@ -100,6 +100,7 @@ A partial checklist list of things to test on the production infrastructure:
 * Check that pwnable machines support the desired protections.
 * Test full solutions for all problems - this means that you can run your solution script and it outputs the correct key. "My solution script gets eip=0x41414141" may not be enough!
 * Test out the process for updating a problem during the CTF - mistakes happen, so it's best to be prepared.
+* Test that the binaries/code running on your services match any files that you are giving out.
 
 # Problems
 
