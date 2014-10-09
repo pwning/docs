@@ -107,7 +107,7 @@ Remember that the goal of a CTF is for the players to learn and have fun! The po
 
 ## Pwnables
 
-The below two sections are specific to pwnables on Linux:
+These pwnables sections only specifically cover Linux binaries.
 
 ### Local
 
@@ -200,6 +200,17 @@ Here are some more general annoying things in pwnables:
   Another obnoxious output format is stuff with ANSI escape codes. Have some self control, please :-)
 * Even though the binary shows that NX is enabled, the machine it's running on doesn't support it.
 * Nonsensical code and "fake" bugs. If 90% of your code is just checking inputs against a bunch of random constants to waste the reverser's time, it is probably not a very fun problem. If your bug is "the program jumps into this buffer for no good reason when these random constraints are satisfied" then you should probably push yourself to be a little more creative :-)
+
+### Compile time protections
+
+Often, a pwnable requires a specific set of protections to be enabled. Here's how to force them on / off in `gcc`
+
+* `-fstack-protector` / `-fno-stack-protector`: Stack canaries
+* `-D_FORTIFY_SOURCE=2` / `-D_FORTIFY_SOURCE=0` (prepend `-U_FORTIFY_SOURCE` to silence re-definition warnings): Use "`*_check`" versions of libc functions like `memcpy()`, `sprintf()`, `read()`, etc. that abort when they detect buffer overflows. (Note that detection is far from perfect and does not work in many cases.)
+* `-fPIE -pie` / `-fno-PIE`: Position independent code (extends ASLR to also randomize the main binary, not just libraries). Note that PIE is usually ineffective on 32 bit, i.e. a PIE-unaware exploit will land once every couple hundred/thousand times. `-fPIC` is a version of `-fPIE` that doesn't require the resulting code to be part of the main executable (by avoiding certain optimizations), and there's also `-fpie` and `-fpic` which are dumb.
+* `-Wl,-z,relro,-z,now` / `?`: Full RELRO (the GOT and PLT will be written and mapped read-only during program load).
+
+As security becomes a more mainstream issue (yay!), more compile-time and runtime protections are being enabled by default. So, to avoid surprises you should really test your problems in their final configuration & setup.
 
 ## Web Challenges
 
