@@ -116,6 +116,7 @@ Local pwnables usually involve SSHing into a machine and exploiting a setuid/set
 
 * Make sure your machine is fully patched and up-to-date.
 * Prevent forkbombing or other resource exhaustion via limits.conf
+* sysctl -w kernel.dmesg_restrict=1 # and set persist it in /etc/sysctl.conf
 * mount -o remount,hidepid=2 /proc # prevent users from seeing each other's processes
 * chmod 1733 /tmp /var/tmp /dev/shm # to avoid people leaking work to others # If you have per-user home dirs, then you can just chmod it 700 :-)
 * Create a user for the problem, put the problem at /home/problemuser/problem
