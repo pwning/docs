@@ -149,6 +149,17 @@ A few tips and reminders:
 
 Kernel challenges should be fun! Don't just install an old OS and task competitors with compiling public exploits. There are many ways to be creative with your challenge!
 
+Alternatively, it is simple to build a very minimal VM with [buildroot](http://buildroot.uclibc.org/), which can be launched via qemu on connection. The above notes apply, but there are a few other caveats with this approach.
+
+A few tips:
+ * Ensure that the vm has networking, pasting hex/shellcode into some super-minimal vm is not fun.
+ * Disable access to the qemu monitor `-monitor /dev/null` to disable debugging of the running vm.
+ * If you can, make the login shell the qemu instance, with `curses` mode, to allow for Ctrl+C without killing the connection.
+ * If this is a large game, it may make sense to place some sort of captcha/proof of work in front of spinning up qemu.
+ * Ensure that every connection gets a "fresh" vm, replacing the disk image with a copy on connect is easy, and in the case of a small vm, shouldn't have much overhead.
+ * KVM can't be used in a virtualized environment like EC2/Azure/etc. Test your VMs speed without hardware virtualization to make sure that it is responsive enough.
+
+
 ### Remote
 
 Remote pwnables involve running a vulnerable network service. There are two popular ways to go about this, xinetd and doing fork/accept in the binary itself.
