@@ -253,7 +253,7 @@ If you have a ciphertext only problem, try to do the following:
 
 * Give enough ciphertext for meaningful statistics (twenty ASCII characters can be almost anything)
 * Use a guessable algorithm. With a classic cipher and a short amount of ciphertext, it may be very difficult to narrow it down. The challenge should be in breaking the crypto system, not figuring out what the crypto system is.
-* If you are using any crypto system made after the 19th century, be sure to tell challengers what the algorithm is. No one wants to guess whether ciphertext is from an Enigma or a Purple Machine; or from 3DES or GHOST
+* If you are using any crypto system made after the 19th century, be sure to tell challengers what the algorithm is. No one wants to guess whether ciphertext is from an Enigma or a Purple Machine; or from 3DES or GOST
 
 If your problem requires a lot of local computation, make sure to test it on reasonable consumer hardware. Realizing late in the competition that while you have the right method of solving the probem, you don't have the computation power to complete the computation before the end is a bad feeling. In general, under an hour on fairly modern consumer hardware is fine; more than that should have good justification.
 
