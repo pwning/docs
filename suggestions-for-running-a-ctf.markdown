@@ -259,6 +259,19 @@ If your problem requires a lot of local computation, make sure to test it on rea
 
 ## Forensics
 
+Forensics can include a number of elements mixed together such as:
+
+* Network (pcap files)
+* Recon   (identifying CVEs, people, locations)
+* Anti-forensic techniques
+
+Most forensic challenges can be tied in with Incident Response and teach the learner to handle things with care - this means running files or being careless could lead to loss of (challenge) data or information essential to solve the challenge. For example, write-blockers are utilized by forensic experts as a way of ensuring the integrity of the data is kept true and valid if used in court. Ensure the challenge leads players on a journey, an investigation of sorts with multiple sources of data leading to the culmination of ultimately one solution.
+
+* When creating network challenges (.pcap etc) rather than a 'follow TCP stream' process, you want the player to get an understanding of the different sources and destinations of data, the timing between them and map it out as a story.
+* Adding layers of basic encoding, encryption or rolling custom protocols can be great for more advanced challenges, but make sure it doesn't turn a network forensics challenge into a crypto one; the skill you want to highlight here is understanding network concepts and technologies and strengthen the player's ability to utilize wireshark/tshark/scapy confidently.
+* Conduct challenge creation in a sandbox with *planned* noise/interferance, do not run on local machines with dropbox packets flying around.
+* Definately play around with Internet-of-Things devices, QR code lookups, and finding the source of an attackers origin IP through proxies/VPNs etc. These are all valid real-world examples and require the player to observe, identify and analyse.
+
 ## Miscellaneous
 
 Try to avoid these as much as possible:
