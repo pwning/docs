@@ -1,6 +1,6 @@
 # Introduction
 
-This document describes some of the design decisions and technical details involved in running a CTF competition. It attempts to summarize some opinions held by the CTF community and list some specific pitfalls to avoid when designing problems. Comments or suggestsions? Pull requests welcome!
+This document describes some of the design decisions and technical details involved in running a CTF competition. It attempts to summarize some opinions held by the CTF community and list some specific pitfalls to avoid when designing problems. Comments or suggestions? Pull requests welcome!
 
 [The Many Maxims of Maximally Effective CTFs](http://captf.com/maxims.html) is another great resource with advice on how to get the most fun out of a CTF.
 
@@ -74,7 +74,7 @@ Whenever a change is made to a problem, announce it in a permanent and visible p
 
 When applicable, leave the original version of the problem available and running. For example, someone might be really close on that pwnable you want to update and make easier :)
 
-If a problem has already been solved, be extremely sensitive about making changes to problems (this includes changing the point value, problem files, description, hints, etc.). These issues usually need to be handled case-by-case, so please exercise good judgement!
+If a problem has already been solved, be extremely sensitive about making changes to problems (this includes changing the point value, problem files, description, hints, etc.). These issues usually need to be handled case-by-case, so please exercise good judgment!
 
 ## Problem Distribution
 
@@ -127,7 +127,7 @@ Local pwnables usually involve SSHing into a machine and exploiting a setuid/set
 * chown root:problemuser /home/problemuser/flag
 * chmod 440 /home/problemuser/flag
 
-As with all problems, make sure to fully test it after it is fully setup. Specifically, you'll want to make sure that your reference solution works as one of the CTF users and that the flag isn't readable via any other means, or writeable by any user besides root.
+As with all problems, make sure to fully test it after it is fully setup. Specifically, you'll want to make sure that your reference solution works as one of the CTF users and that the flag isn't readable via any other means, or writable by any user besides root.
 
 ### Local Kernel
 
@@ -255,7 +255,7 @@ If you have a ciphertext only problem, try to do the following:
 * Use a guessable algorithm. With a classic cipher and a short amount of ciphertext, it may be very difficult to narrow it down. The challenge should be in breaking the crypto system, not figuring out what the crypto system is.
 * If you are using any crypto system made after the 19th century, be sure to tell challengers what the algorithm is. No one wants to guess whether ciphertext is from an Enigma or a Purple Machine; or from 3DES or GOST
 
-If your problem requires a lot of local computation, make sure to test it on reasonable consumer hardware. Realizing late in the competition that while you have the right method of solving the probem, you don't have the computation power to complete the computation before the end is a bad feeling. In general, under an hour on fairly modern consumer hardware is fine; more than that should have good justification.
+If your problem requires a lot of local computation, make sure to test it on reasonable consumer hardware. Realizing late in the competition that while you have the right method of solving the problem, you don't have the computation power to complete the computation before the end is a bad feeling. In general, under an hour on fairly modern consumer hardware is fine; more than that should have good justification.
 
 ## Forensics
 
@@ -269,8 +269,8 @@ Most forensic challenges can be tied in with Incident Response and teach the lea
 
 * When creating network challenges (.pcap etc) rather than a 'follow TCP stream' process, you want the player to get an understanding of the different sources and destinations of data, the timing between them and map it out as a story.
 * Adding layers of basic encoding, encryption or rolling custom protocols can be great for more advanced challenges, but make sure it doesn't turn a network forensics challenge into a crypto one; the skill you want to highlight here is understanding network concepts and technologies and strengthen the player's ability to utilize wireshark/tshark/scapy confidently.
-* Conduct challenge creation in a sandbox with *planned* noise/interferance, do not run on local machines with dropbox packets flying around.
-* Definately play around with Internet-of-Things devices, QR code lookups, and finding the source of an attackers origin IP through proxies/VPNs etc. These are all valid real-world examples and require the player to observe, identify and analyse.
+* Conduct challenge creation in a sandbox with *planned* noise/interference, do not run on local machines with dropbox packets flying around.
+* Definitely play around with Internet-of-Things devices, QR code lookups, and finding the source of an attackers origin IP through proxies/VPNs etc. These are all valid real-world examples and require the player to observe, identify and analyse.
 
 ## Miscellaneous
 
