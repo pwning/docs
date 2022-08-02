@@ -2,7 +2,7 @@
 
 This document describes some of the design decisions and technical details involved in running a CTF competition. It attempts to summarize some opinions held by the CTF community and list some specific pitfalls to avoid when designing problems. Comments or suggestions? Pull requests welcome!
 
-[The Many Maxims of Maximally Effective CTFs](http://captf.com/maxims.html) is another great resource with advice on how to get the most fun out of a CTF.
+[The Many Maxims of Maximally Effective CTFs](https://web.archive.org/web/20201212081922/http://captf.com/maxims.html) is another great resource with advice on how to get the most fun out of a CTF.
 
 # General Design
 
